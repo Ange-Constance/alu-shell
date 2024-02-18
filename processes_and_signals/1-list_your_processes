@@ -1,0 +1,8 @@
+#!/bin/env bash
+# Display a list of currently running processes with hierarchy
+# Using ps command to retrieve process information
+# Options used:
+# -e: Select all processes
+# -o: User-defined format (user, pid, ppid, command)
+# --forest: Display process hierarchy as a tree
+ps aux --forest
