@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 # Trap SIGTERM signal to print a message
-trap 'echo "I am invincible!!!"; exit' SIGTERM
+trap 'echo "ok"; exit' SIGTERM
 while true; do
     echo "To infinity and beyond"
     sleep 2
