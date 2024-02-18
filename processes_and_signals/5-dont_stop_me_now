@@ -1,9 +1,10 @@
 #!/usr/bin/env bash
-# Display "To infinity and beyond" indefinitely with a sleep of 2 seconds
-trap 'echo "Received termination signal. Ignoring."' SIGTERM SIGINT
-
-while true; do
-    echo "To infinity and beyond"
-    sleep 2
-done
-
+#Find and stop the 4-to_infinity_and_beyond process using kill
+process_name="4-to_infinity_and_beyond"
+pid=$(pgrep -f "$process_name")
+if [ -n "$pid" ]; then
+    echo "Stopping process with name: $process_name, PID: $pid" 
+    kill "$pid"
+else
+    echo "Process with name '$process_name' not found."
+fi
