@@ -1,4 +1,5 @@
 #!/usr/bin/env bash
+# This is a script that handle cleanup and termination
 pid_file="/var/run/myscript.pid"
 cleanup_and_exit() {
     echo "Cleaning up and exiting..."
