@@ -2,8 +2,7 @@
 #Find and stop the 4-to_infinity_and_beyond process using kill
 process_name="4-to_infinity_and_beyond"
 pid=$(pgrep -f "$process_name")
-if [ -n "$pid" ]; then
-    echo "Stopping process with name: $process_name, PID: $pid" 
+if [ -n "$pid" ]; then 
     kill "$pid"
 else
     echo "Process with name '$process_name' not found."
