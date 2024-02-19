@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# Here we have alot of functionalities
+# Here we have alot of functionalitie
 process_file="/tmp/my_process"
 pid_file="/var/run/my_process.pid"
 case "$1" in
@@ -8,14 +8,15 @@ case "$1" in
             echo "manage_my_process is already running. Use 'restart' to restart it."
             exit 1
         fi
-        ./manage_my_process & echo $! > "$pid_file"
-        echo "manage_my_process started"
+        ./manage_my_process > "$process_file" 2>&1 &
+        echo $! > "$pid_file"
+        echo "manage_my_process started" && exit
         ;;
     stop)
         if [ -e "$pid_file" ]; then
             kill -TERM $(cat "$pid_file")
             rm -f "$pid_file"
-            echo "manage_my_process stopped"
+            echo "manage_my_process stopped" && exit
         else
             echo "manage_my_process is not running"
             exit 1
@@ -27,8 +28,9 @@ case "$1" in
             rm -f "$pid_file"
             echo "manage_my_process stopped"
         fi
-        ./manage_my_process & echo $! > "$pid_file"
-        echo "manage_my_process restarted"
+        ./manage_my_process > "$process_file" 2>&1 &
+        echo $! > "$pid_file"
+        echo "manage_my_process restarted" && exit
         ;;
     *)
         echo "Usage: $0 {start|stop|restart}"
