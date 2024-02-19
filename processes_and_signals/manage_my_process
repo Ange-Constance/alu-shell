@@ -1,39 +1,8 @@
-#!/usr/bin/env bash
-# Here we have alot of functionalitie
-process_file="/tmp/my_process"
-pid_file="/var/run/my_process.pid"
-case "$1" in
-    start)
-        if [ -e "$pid_file" ]; then
-            echo "manage_my_process is already running. Use 'restart' to restart it."
-            exit 1
-        fi
-        ./manage_my_process > "$process_file" 2>&1 &
-        echo $! > "$pid_file"
-        echo "manage_my_process started" && exit
-        ;;
-    stop)
-        if [ -e "$pid_file" ]; then
-            kill -TERM $(cat "$pid_file")
-            rm -f "$pid_file"
-            echo "manage_my_process stopped" && exit
-        else
-            echo "manage_my_process is not running"
-            exit 1
-        fi
-        ;;
-    restart)
-        if [ -e "$pid_file" ]; then
-            kill -TERM $(cat "$pid_file")
-            rm -f "$pid_file"
-            echo "manage_my_process stopped"
-        fi
-        ./manage_my_process > "$process_file" 2>&1 &
-        echo $! > "$pid_file"
-        echo "manage_my_process restarted" && exit
-        ;;
-    *)
-        echo "Usage: $0 {start|stop|restart}"
-        exit 1
-        ;;
-esac
+#!/usr/bin/env bash                                
+# display all running PID                          
+                                                  
+while :                                            
+do                                                 
+        echo "I am alive!" >> /tmp/my_process      
+        sleep 2                                    
+done
