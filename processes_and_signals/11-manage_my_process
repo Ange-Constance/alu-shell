@@ -4,9 +4,9 @@ is_process_running() {
     pid_file="/var/run/my_process.pid"
     pid=$(cat "$pid_file" 2>/dev/null)
     if [ -n "$pid" ] && ps -p "$pid" > /dev/null; then
-        return 0  # Process is running
-    else
-        return 1  # Process is not running
+        return 0  
+else
+        return 1  
     fi
 }
 case "$1" in
