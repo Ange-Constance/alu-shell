@@ -1,3 +1,8 @@
 #!/usr/bin/env bash
-# Stop the 4-to_infinity_and_beyond process using pkill
-pkill -f "7-highlander"
+# Stop the 4-to_infinity_and_beyond process using "
+./7-highlander &
+highlander_pid=$!
+trap 'kill -TERM $highlander_pid' SIGTERM
+while true; do
+    sleep 2
+done
