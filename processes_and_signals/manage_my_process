@@ -1,0 +1,39 @@
+#!/usr/bin/env bash
+# Here we have alot of functionalities
+pid_file="/var/run/my_process.pid"
+log_file="/tmp/my_process"
+start_process() {
+    nohup ./manage_my_process > "$log_file" 2>&1 &
+    echo $! > "$pid_file"
+    echo "manage_my_process started"
+}
+stop_process() {
+    pid=$(cat "$pid_file" 2>/dev/null)
+    if [ -n "$pid" ]; then
+        kill "$pid"
+        wait "$pid" 2>/dev/null
+        echo "manage_my_process stopped"
+    else
+        echo "manage_my_process is not running"
+    fi
+}
+restart_process() {
+    stop_process
+    start_process
+    echo "manage_my_process restarted"
+}
+case "$1" in
+    start)
+        start_process
+        ;;
+    stop)
+        stop_process
+        ;;
+    restart)
+        restart_process
+        ;;
+    *)
+        echo "Usage: $0 {start|stop|restart}"
+        exit 1
+        ;;
+esac
