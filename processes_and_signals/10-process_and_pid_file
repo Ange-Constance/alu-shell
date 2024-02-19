@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# This is a script that handle cleanup and termination
+# Function to handle cleanup and termination
 pid_file="/var/run/myscript.pid"
 cleanup_and_exit() {
     echo "Cleaning up and exiting..."
@@ -8,6 +8,7 @@ cleanup_and_exit() {
 }
 handle_sigterm() {
     echo "I hate the kill command"
+    cleanup_and_exit
 }
 handle_sigint() {
     echo "Y U no love me?!"
