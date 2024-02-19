@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
-# Trap SIGTERM signal to print a message
-trap 'echo "ok"; exit' SIGTERM
+#Make a copy
+trap "echo 'I am invincible!!!'" SIGTERM
 while true; do
-    echo "To infinity and beyond"
-    sleep 2
+echo "To infinity and beyond"
+sleep 2
 done
